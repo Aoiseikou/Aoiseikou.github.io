@@ -1,115 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <title>AOISEIKOU</title>
 
+<!-- Space Mono for body text -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
 <style>
+
+/* Biondi Sans for title */
+
+@font-face {
+font-family: 'BiondiSans';
+src: url('fonts/BiondiSans-Regular.otf') format('opentype');
+font-weight: normal;
+font-style: normal;
+}
 
 body{
 margin:0;
 background:black;
 color:white;
-font-family:Arial, Helvetica, sans-serif;
+font-family:'Space Mono', monospace;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
 text-align:center;
+flex-direction:column;
 overflow:hidden;
-transition:opacity 1.2s;
 }
 
-/* CORNER TEXT */
+/* corner text */
 
 .corner{
 position:absolute;
 top:20px;
 left:20px;
 font-size:12px;
+opacity:0.6;
 letter-spacing:2px;
+}
+
+/* title */
+
+h1{
+font-family:'BiondiSans', sans-serif;
+font-size:52px;
+letter-spacing:12px;
+margin:0;
+}
+
+/* tagline */
+
+.tagline{
+margin-top:12px;
+opacity:0.8;
+letter-spacing:3px;
+}
+
+/* enter button */
+
+.enter{
+margin-top:40px;
+cursor:pointer;
+letter-spacing:3px;
+font-size:18px;
+}
+
+.enter:hover{
 opacity:0.6;
 }
 
-/* MAIN */
-
-.container{
-line-height:1.8;
-}
-
-h1{
-font-size:42px;
-letter-spacing:6px;
-margin-bottom:5px;
-}
-
-/* TAGLINE */
-
-.tagline{
-font-size:14px;
-letter-spacing:2px;
-opacity:0.8;
-margin-bottom:20px;
-}
-
-/* ENTER */
-
-.enter{
-cursor:pointer;
-letter-spacing:3px;
-animation:blink 2s infinite;
-}
-
-@keyframes blink{
-0%,100%{opacity:1;}
-50%{opacity:0.3;}
-}
-
-/* FOOTER */
+/* footer */
 
 .footer{
 position:absolute;
 bottom:20px;
 font-size:12px;
-letter-spacing:2px;
 opacity:0.6;
-}
-
-/* FILM GRAIN */
-
-.grain{
-position:fixed;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-pointer-events:none;
-opacity:0.07;
-background-image:url("grain.png");
-animation:grain 8s steps(10) infinite, flicker 2s infinite;
-}
-
-/* GRAIN MOVEMENT */
-
-@keyframes grain{
-0%,100%{transform:translate(0,0)}
-10%{transform:translate(-5%,-10%)}
-20%{transform:translate(-15%,5%)}
-30%{transform:translate(7%,-25%)}
-40%{transform:translate(-5%,25%)}
-50%{transform:translate(-15%,10%)}
-60%{transform:translate(15%,0%)}
-70%{transform:translate(0%,15%)}
-80%{transform:translate(3%,35%)}
-90%{transform:translate(-10%,10%)}
-}
-
-/* VHS FLICKER */
-
-@keyframes flicker{
-0%{opacity:0.07;}
-50%{opacity:0.05;}
-100%{opacity:0.07;}
+letter-spacing:2px;
 }
 
 </style>
@@ -121,25 +93,15 @@ animation:grain 8s steps(10) infinite, flicker 2s infinite;
 home / internet
 </div>
 
-<div class="container">
+<h1 id="title"></h1>
 
-<h1>AOISEIKOU</h1>
+<div class="tagline" id="tagline"></div>
 
-<div class="tagline">
-#DocumentingCulture
-</div>
-
-<div class="enter" onclick="enterSite()">
-ENTER.
-</div>
-
-</div>
+<div class="enter" id="enter" onclick="enterSite()"></div>
 
 <div class="footer">
 copyright 2026 AOISEIKOU
 </div>
-
-<div class="grain"></div>
 
 <audio id="music" loop>
 <source src="music.mp3" type="audio/mpeg">
@@ -147,24 +109,91 @@ copyright 2026 AOISEIKOU
 
 <script>
 
+/* typing animation */
+
+let titleText = "AOISEIKOU";
+let tagText = "#DocumentingCulture";
+
+let i = 0;
+let j = 0;
+
+function typeTitle(){
+
+if(i < titleText.length){
+
+document.getElementById("title").innerHTML += titleText.charAt(i);
+
+i++;
+
+setTimeout(typeTitle,120);
+
+}else{
+
+setTimeout(typeTag,300);
+
+}
+
+}
+
+function typeTag(){
+
+if(j < tagText.length){
+
+document.getElementById("tagline").innerHTML += tagText.charAt(j);
+
+j++;
+
+setTimeout(typeTag,80);
+
+}else{
+
+startEnter();
+
+}
+
+}
+
+/* ENTER dots animation */
+
+function startEnter(){
+
+let dots = 0;
+
+setInterval(function(){
+
+dots = (dots % 3) + 1;
+
+let dotText = ".".repeat(dots);
+
+document.getElementById("enter").innerHTML = "ENTER" + dotText;
+
+},1000);
+
+}
+
+/* ENTER click */
+
 function enterSite(){
 
 let music = document.getElementById("music");
 
 music.volume = 0;
+
 music.play();
 
-/* fade in music */
-
 let fade = setInterval(function(){
-if(music.volume < 0.6){
-music.volume += 0.02;
-}else{
-clearInterval(fade);
-}
-},100);
 
-/* page fade */
+if(music.volume < 0.6){
+
+music.volume += 0.02;
+
+}else{
+
+clearInterval(fade);
+
+}
+
+},100);
 
 document.body.style.opacity = 0;
 
@@ -175,6 +204,8 @@ window.location.href = "home.html";
 },1200);
 
 }
+
+typeTitle();
 
 </script>
 

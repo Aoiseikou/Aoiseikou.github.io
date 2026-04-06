@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>AOISEIKOU ARCHIVE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+/* Biondi Sans for title */
+
+@font-face{
+font-family:'BiondiSans';
+src:url('fonts/BiondiSans-Regular.otf') format('opentype');
+}
+
+/* base */
+
+body{
+margin:0;
+background:radial-gradient(circle,#0a0a0a 0%,#000 70%);
+color:white;
+font-family:'Space Mono',monospace;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+text-align:center;
+overflow:hidden;
+}
+
+/* title */
+
+h1{
+font-family:'BiondiSans',sans-serif;
+font-size:40px;
+letter-spacing:10px;
+margin-bottom:40px;
+}
+
+/* menu */
+
+.menu{
+text-align:left;
+}
+
+.menu a{
+display:block;
+color:white;
+text-decoration:none;
+margin:12px 0;
+letter-spacing:3px;
+}
+
+.menu a:hover{
+opacity:.6;
+}
+
+/* corner */
+
+.corner{
+position:absolute;
+top:20px;
+left:20px;
+font-size:12px;
+opacity:.6;
+letter-spacing:2px;
+}
+
+/* grain */
+
+.grain{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('grain.png');
+opacity:.08;
+pointer-events:none;
+}
+
+/* vignette */
+
+.vignette{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+box-shadow:inset 0 0 200px black;
+pointer-events:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="corner">
+archive / aoiseikou
+</div>
+
+<h1>AOISEIKOU</h1>
+
+<div class="menu">
+
+<a href="#">> machines</a>
+<a href="#">> meetlog</a>
+<a href="#">> culture</a>
+<a href="#">> community</a>
+
+</div>
+
+</body>
+</html>

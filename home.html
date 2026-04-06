@@ -1,123 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<title>AOISEIKOU ARCHIVE</title>
+<title>AOISEIKOU Desktop</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 
 <style>
-
-/* Biondi Sans for title */
-
-@font-face{
-font-family:'BiondiSans';
-src:url('fonts/BiondiSans-Regular.otf') format('opentype');
+body {
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: radial-gradient(circle,#0a0a0a 0%,#000 70%);
+  font-family:'Space Mono', monospace;
+  position: relative;
 }
 
-/* base */
+/* Grain & vignette overlays */
+.grain { position: fixed; top:0; left:0; width:100%; height:100%; background:url('grain.png'); opacity:0.08; pointer-events:none;}
+.vignette { position: fixed; top:0; left:0; width:100%; height:100%; box-shadow: inset 0 0 200px black; pointer-events:none;}
 
-body{
-margin:0;
-background:radial-gradient(circle,#0a0a0a 0%,#000 70%);
-color:white;
-font-family:'Space Mono',monospace;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-flex-direction:column;
-text-align:center;
-overflow:hidden;
+/* Wrapper for scaling */
+.scale-wrapper {
+  transform: scale(1.15); /* slightly bigger */
+  transform-origin: center;
 }
 
-/* title */
-
-h1{
-font-family:'BiondiSans',sans-serif;
-font-size:40px;
-letter-spacing:10px;
-margin-bottom:40px;
+/* Window */
+.window {
+  background: #111;
+  border: 2px solid #555;
+  box-shadow: 0 0 20px rgba(0,0,0,.8);
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  /* remove fixed height to hug content */
 }
 
-/* menu */
+/* Titlebar */
+.titlebar {
+  background: #222;
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+.titlebar .title { color:white; }
+.titlebar .close { color:white; cursor:pointer; font-weight:bold; }
 
-.menu{
-text-align:left;
+/* Window body: grid */
+.window-body {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-content: start;
 }
 
-.menu a{
-display:block;
-color:white;
-text-decoration:none;
-margin:12px 0;
-letter-spacing:3px;
+/* Folder */
+.folder { cursor: pointer; text-align: center; }
+.folder:hover { opacity: 0.7; }
+.folder img.icon { width: 48px; height: 48px; margin-bottom: 6px; display: block; }
+.folder span.name { font-size: 14px; letter-spacing:1px; color:white; display:block; }
+
+/* Taskbar */
+.taskbar {
+  position: fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#222;
+  padding:4px 10px;
+  display:flex;
+  gap:6px;
+  font-size:12px;
 }
-
-.menu a:hover{
-opacity:.6;
+.taskbar button {
+  display:flex;
+  align-items:center;
+  gap:4px;
+  background:#333;
+  color:white;
+  border:1px solid #555;
+  padding:2px 6px;
+  cursor:pointer;
+  letter-spacing:1px;
 }
-
-/* corner */
-
-.corner{
-position:absolute;
-top:20px;
-left:20px;
-font-size:12px;
-opacity:.6;
-letter-spacing:2px;
-}
-
-/* grain */
-
-.grain{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url('grain.png');
-opacity:.08;
-pointer-events:none;
-}
-
-/* vignette */
-
-.vignette{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-box-shadow:inset 0 0 200px black;
-pointer-events:none;
-}
+.taskbar button:hover { opacity:0.7; }
+.taskbar img { width:16px; height:16px; }
 
 </style>
-
 </head>
 
 <body>
-
 <div class="grain"></div>
 <div class="vignette"></div>
 
-<div class="corner">
-archive / aoiseikou
+<!-- Scaled wrapper -->
+<div class="scale-wrapper">
+  <div class="window" id="mainWindow">
+    <div class="titlebar">
+      <div class="title">aoiseikou.html</div>
+      <div class="close" onclick="closeWindow()">✖</div>
+    </div>
+    <div class="window-body">
+      <div class="folder" onclick="location.href='machines.html'">
+        <img class="icon" src="icons/folder.png" alt="Machines">
+        <span class="name">machines</span>
+      </div>
+      <div class="folder" onclick="location.href='meetlog.html'">
+        <img class="icon" src="icons/folder.png" alt="Meetlog">
+        <span class="name">meetlog</span>
+      </div>
+      <div class="folder" onclick="location.href='culture.html'">
+        <img class="icon" src="icons/folder.png" alt="Culture">
+        <span class="name">culture</span>
+      </div>
+      <div class="folder" onclick="location.href='community.html'">
+        <img class="icon" src="icons/folder.png" alt="Community">
+        <span class="name">community</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h1>AOISEIKOU</h1>
-
-<div class="menu">
-
-<a href="#">> machines</a>
-<a href="#">> meetlog</a>
-<a href="#">> culture</a>
-<a href="#">> community</a>
-
+<!-- Taskbar -->
+<div class="taskbar">
+  <button onclick="openWindow()">
+    <img src="icons/folder.png" alt="main"> aoiseikou.html
+  </button>
+  <button onclick="location.href='machines.html'">
+    <img src="icons/folder.png" alt="Machines"> machines
+  </button>
+  <button onclick="location.href='meetlog.html'">
+    <img src="icons/folder.png" alt="Meetlog"> meetlog
+  </button>
+  <button onclick="location.href='culture.html'">
+    <img src="icons/folder.png" alt="Culture"> culture
+  </button>
+  <button onclick="location.href='community.html'">
+    <img src="icons/folder.png" alt="Community"> community
+  </button>
 </div>
+
+<!-- Music -->
+<audio id="music" loop autoplay>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function closeWindow(){ document.getElementById("mainWindow").style.display="none"; }
+function openWindow(){ document.getElementById("mainWindow").style.display="flex"; }
+
+// Autoplay fallback
+const music = document.getElementById('music');
+document.body.addEventListener('click',()=>music.play(), { once:true });
+</script>
 
 </body>
 </html>

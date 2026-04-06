@@ -5,49 +5,37 @@
 <meta charset="UTF-8">
 <title>AOISEIKOU</title>
 
-<!-- Space Mono for body text -->
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 
 <style>
 
-/* Biondi Sans for title */
+/* Biondi Sans (title only) */
 
-@font-face {
-font-family: 'BiondiSans';
-src: url('fonts/BiondiSans-Regular.otf') format('opentype');
-font-weight: normal;
-font-style: normal;
+@font-face{
+font-family:'BiondiSans';
+src:url('fonts/BiondiSans-Regular.otf') format('opentype');
 }
+
+/* base */
 
 body{
 margin:0;
-background:black;
+background:radial-gradient(circle,#0a0a0a 0%,#000 70%);
 color:white;
-font-family:'Space Mono', monospace;
+font-family:'Space Mono',monospace;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-text-align:center;
 flex-direction:column;
+text-align:center;
 overflow:hidden;
-}
-
-/* corner text */
-
-.corner{
-position:absolute;
-top:20px;
-left:20px;
-font-size:12px;
-opacity:0.6;
-letter-spacing:2px;
 }
 
 /* title */
 
 h1{
-font-family:'BiondiSans', sans-serif;
+font-family:'BiondiSans',sans-serif;
 font-size:52px;
 letter-spacing:12px;
 margin:0;
@@ -56,12 +44,12 @@ margin:0;
 /* tagline */
 
 .tagline{
-margin-top:12px;
-opacity:0.8;
+margin-top:10px;
+opacity:.8;
 letter-spacing:3px;
 }
 
-/* enter button */
+/* enter */
 
 .enter{
 margin-top:40px;
@@ -71,7 +59,18 @@ font-size:18px;
 }
 
 .enter:hover{
-opacity:0.6;
+opacity:.6;
+}
+
+/* corner text */
+
+.corner{
+position:absolute;
+top:20px;
+left:20px;
+font-size:12px;
+opacity:.6;
+letter-spacing:2px;
 }
 
 /* footer */
@@ -80,8 +79,33 @@ opacity:0.6;
 position:absolute;
 bottom:20px;
 font-size:12px;
-opacity:0.6;
+opacity:.6;
 letter-spacing:2px;
+}
+
+/* film grain */
+
+.grain{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('grain.png');
+opacity:.08;
+pointer-events:none;
+}
+
+/* vignette */
+
+.vignette{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+box-shadow:inset 0 0 200px black;
+pointer-events:none;
 }
 
 </style>
@@ -89,9 +113,10 @@ letter-spacing:2px;
 
 <body>
 
-<div class="corner">
-home / internet
-</div>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="corner">home / internet</div>
 
 <h1 id="title"></h1>
 
@@ -99,9 +124,7 @@ home / internet
 
 <div class="enter" id="enter" onclick="enterSite()"></div>
 
-<div class="footer">
-copyright 2026 AOISEIKOU
-</div>
+<div class="footer">copyright 2026 AOISEIKOU</div>
 
 <audio id="music" loop>
 <source src="music.mp3" type="audio/mpeg">
@@ -109,103 +132,77 @@ copyright 2026 AOISEIKOU
 
 <script>
 
-/* typing animation */
+/* typing */
 
-let titleText = "AOISEIKOU";
-let tagText = "#DocumentingCulture";
+let title="AOISEIKOU"
+let tag="#DocumentingCulture"
 
-let i = 0;
-let j = 0;
+let i=0
+let j=0
 
 function typeTitle(){
-
-if(i < titleText.length){
-
-document.getElementById("title").innerHTML += titleText.charAt(i);
-
-i++;
-
-setTimeout(typeTitle,120);
-
+if(i<title.length){
+document.getElementById("title").innerHTML+=title[i]
+i++
+setTimeout(typeTitle,120)
 }else{
-
-setTimeout(typeTag,300);
-
+setTimeout(typeTag,300)
 }
-
 }
 
 function typeTag(){
-
-if(j < tagText.length){
-
-document.getElementById("tagline").innerHTML += tagText.charAt(j);
-
-j++;
-
-setTimeout(typeTag,80);
-
+if(j<tag.length){
+document.getElementById("tagline").innerHTML+=tag[j]
+j++
+setTimeout(typeTag,80)
 }else{
-
-startEnter();
-
+enterLoop()
+}
 }
 
-}
+/* enter dots */
 
-/* ENTER dots animation */
+function enterLoop(){
 
-function startEnter(){
-
-let dots = 0;
+let dots=0
 
 setInterval(function(){
 
-dots = (dots % 3) + 1;
+dots=(dots%3)+1
+document.getElementById("enter").innerHTML="ENTER"+".".repeat(dots)
 
-let dotText = ".".repeat(dots);
-
-document.getElementById("enter").innerHTML = "ENTER" + dotText;
-
-},1000);
+},1000)
 
 }
 
-/* ENTER click */
+/* enter click */
 
 function enterSite(){
 
-let music = document.getElementById("music");
+let music=document.getElementById("music")
 
-music.volume = 0;
+music.volume=0
+music.play()
 
-music.play();
+let fade=setInterval(function(){
 
-let fade = setInterval(function(){
-
-if(music.volume < 0.6){
-
-music.volume += 0.02;
-
+if(music.volume<0.6){
+music.volume+=0.02
 }else{
-
-clearInterval(fade);
-
+clearInterval(fade)
 }
 
-},100);
+},100)
 
-document.body.style.opacity = 0;
+document.body.style.opacity=0
 
 setTimeout(function(){
-
-window.location.href = "home.html";
-
-},1200);
+window.location.href="home.html"
+},1200)
 
 }
 
-typeTitle();
+typeTitle()
 
 </script>
 

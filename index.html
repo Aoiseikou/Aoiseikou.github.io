@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AOISEIKOU</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial, Helvetica, sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+overflow:hidden;
+transition:opacity 1.2s;
+}
+
+/* CORNER TEXT */
+
+.corner{
+position:absolute;
+top:20px;
+left:20px;
+font-size:12px;
+letter-spacing:2px;
+opacity:0.6;
+}
+
+/* MAIN */
+
+.container{
+line-height:1.8;
+}
+
+h1{
+font-size:42px;
+letter-spacing:6px;
+margin-bottom:5px;
+}
+
+/* TAGLINE */
+
+.tagline{
+font-size:14px;
+letter-spacing:2px;
+opacity:0.8;
+margin-bottom:20px;
+}
+
+/* ENTER */
+
+.enter{
+cursor:pointer;
+letter-spacing:3px;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:1;}
+50%{opacity:0.3;}
+}
+
+/* FOOTER */
+
+.footer{
+position:absolute;
+bottom:20px;
+font-size:12px;
+letter-spacing:2px;
+opacity:0.6;
+}
+
+/* FILM GRAIN */
+
+.grain{
+position:fixed;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+pointer-events:none;
+opacity:0.07;
+background-image:url("grain.png");
+animation:grain 8s steps(10) infinite, flicker 2s infinite;
+}
+
+/* GRAIN MOVEMENT */
+
+@keyframes grain{
+0%,100%{transform:translate(0,0)}
+10%{transform:translate(-5%,-10%)}
+20%{transform:translate(-15%,5%)}
+30%{transform:translate(7%,-25%)}
+40%{transform:translate(-5%,25%)}
+50%{transform:translate(-15%,10%)}
+60%{transform:translate(15%,0%)}
+70%{transform:translate(0%,15%)}
+80%{transform:translate(3%,35%)}
+90%{transform:translate(-10%,10%)}
+}
+
+/* VHS FLICKER */
+
+@keyframes flicker{
+0%{opacity:0.07;}
+50%{opacity:0.05;}
+100%{opacity:0.07;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="corner">
+home / internet
+</div>
+
+<div class="container">
+
+<h1>AOISEIKOU</h1>
+
+<div class="tagline">
+#DocumentingCulture
+</div>
+
+<div class="enter" onclick="enterSite()">
+ENTER.
+</div>
+
+</div>
+
+<div class="footer">
+copyright 2026 AOISEIKOU
+</div>
+
+<div class="grain"></div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function enterSite(){
+
+let music = document.getElementById("music");
+
+music.volume = 0;
+music.play();
+
+/* fade in music */
+
+let fade = setInterval(function(){
+if(music.volume < 0.6){
+music.volume += 0.02;
+}else{
+clearInterval(fade);
+}
+},100);
+
+/* page fade */
+
+document.body.style.opacity = 0;
+
+setTimeout(function(){
+
+window.location.href = "home.html";
+
+},1200);
+
+}
+
+</script>
+
+</body>
+</html>

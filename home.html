@@ -25,7 +25,7 @@ body {
 
 /* Wrapper for scaling */
 .scale-wrapper {
-  transform: scale(1.15); /* slightly bigger */
+  transform: scale(1.1);
   transform-origin: center;
 }
 
@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 500px;
-  /* remove fixed height to hug content */
+  position: absolute;
 }
 
 /* Titlebar */
@@ -48,6 +48,7 @@ body {
   letter-spacing: 2px;
   display: flex;
   justify-content: space-between;
+  cursor: grab;
 }
 .titlebar .title { color:white; }
 .titlebar .close { color:white; cursor:pointer; font-weight:bold; }
@@ -67,6 +68,23 @@ body {
 .folder:hover { opacity: 0.7; }
 .folder img.icon { width: 48px; height: 48px; margin-bottom: 6px; display: block; }
 .folder span.name { font-size: 14px; letter-spacing:1px; color:white; display:block; }
+
+/* Content area */
+#content {
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+  text-align: left;
+  padding: 10px;
+  border-top: 1px solid #555;
+  min-height: 100px;
+}
+
+/* Music volume control */
+#volume-control {
+  margin: 10px;
+  width: calc(100% - 20px);
+}
 
 /* Taskbar */
 .taskbar {
@@ -93,57 +111,55 @@ body {
 }
 .taskbar button:hover { opacity:0.7; }
 .taskbar img { width:16px; height:16px; }
-
 </style>
 </head>
-
 <body>
 <div class="grain"></div>
 <div class="vignette"></div>
 
-<!-- Scaled wrapper -->
 <div class="scale-wrapper">
   <div class="window" id="mainWindow">
-    <div class="titlebar">
+    <div class="titlebar" id="titlebar">
       <div class="title">aoiseikou.html</div>
       <div class="close" onclick="closeWindow()">✖</div>
     </div>
     <div class="window-body">
-      <div class="folder" onclick="location.href='machines.html'">
+      <div class="folder" onclick="loadContent('machines')">
         <img class="icon" src="icons/folder.png" alt="Machines">
         <span class="name">machines</span>
       </div>
-      <div class="folder" onclick="location.href='meetlog.html'">
+      <div class="folder" onclick="loadContent('meetlog')">
         <img class="icon" src="icons/folder.png" alt="Meetlog">
         <span class="name">meetlog</span>
       </div>
-      <div class="folder" onclick="location.href='culture.html'">
+      <div class="folder" onclick="loadContent('culture')">
         <img class="icon" src="icons/folder.png" alt="Culture">
         <span class="name">culture</span>
       </div>
-      <div class="folder" onclick="location.href='community.html'">
+      <div class="folder" onclick="loadContent('community')">
         <img class="icon" src="icons/folder.png" alt="Community">
         <span class="name">community</span>
       </div>
     </div>
+    <div id="content">Select a folder to view content...</div>
+    <input type="range" id="volume-control" min="0" max="1" step="0.01" value="0.5">
   </div>
 </div>
 
-<!-- Taskbar -->
 <div class="taskbar">
   <button onclick="openWindow()">
     <img src="icons/folder.png" alt="main"> aoiseikou.html
   </button>
-  <button onclick="location.href='machines.html'">
+  <button onclick="loadContent('machines')">
     <img src="icons/folder.png" alt="Machines"> machines
   </button>
-  <button onclick="location.href='meetlog.html'">
+  <button onclick="loadContent('meetlog')">
     <img src="icons/folder.png" alt="Meetlog"> meetlog
   </button>
-  <button onclick="location.href='culture.html'">
+  <button onclick="loadContent('culture')">
     <img src="icons/folder.png" alt="Culture"> culture
   </button>
-  <button onclick="location.href='community.html'">
+  <button onclick="loadContent('community')">
     <img src="icons/folder.png" alt="Community"> community
   </button>
 </div>
@@ -154,13 +170,57 @@ body {
 </audio>
 
 <script>
+// SPA content
+const contentDiv = document.getElementById('content');
+const pages = {
+  machines: "<h3>Machines</h3><p>Here are all the cool machines of Aoiseikou.</p>",
+  meetlog: "<h3>Meetlog</h3><p>All past meets and events documented here.</p>",
+  culture: "<h3>Culture</h3><p>Aoiseikou culture, ethos, and philosophy.</p>",
+  community: "<h3>Community</h3><p>Community projects, forums, and members.</p>"
+};
+
+function loadContent(folder) {
+  contentDiv.innerHTML = pages[folder] || "<p>Folder is empty.</p>";
+}
+
+// Window open/close
 function closeWindow(){ document.getElementById("mainWindow").style.display="none"; }
 function openWindow(){ document.getElementById("mainWindow").style.display="flex"; }
 
-// Autoplay fallback
+// Ensure music plays on first click if autoplay blocked
 const music = document.getElementById('music');
 document.body.addEventListener('click',()=>music.play(), { once:true });
-</script>
 
+// Volume slider
+const volumeControl = document.getElementById('volume-control');
+volumeControl.addEventListener('input',()=> {
+  music.volume = volumeControl.value;
+});
+
+// Movable window
+const windowEl = document.getElementById('mainWindow');
+const titlebar = document.getElementById('titlebar');
+let isDragging = false;
+let offsetX, offsetY;
+
+titlebar.addEventListener('mousedown', (e)=>{
+  isDragging = true;
+  offsetX = e.clientX - windowEl.offsetLeft;
+  offsetY = e.clientY - windowEl.offsetTop;
+  titlebar.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e)=>{
+  if(isDragging){
+    windowEl.style.left = (e.clientX - offsetX) + 'px';
+    windowEl.style.top = (e.clientY - offsetY) + 'px';
+  }
+});
+
+document.addEventListener('mouseup', ()=>{
+  isDragging = false;
+  titlebar.style.cursor = 'grab';
+});
+</script>
 </body>
 </html>

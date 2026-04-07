@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>community.html</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  background: radial-gradient(circle,#0a0a0a 0%,#000 70%);
+  font-family: 'Space Mono', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Grain & vignette */
+.grain { position: fixed; top:0; left:0; width:100%; height:100%; background:url('grain.png'); opacity:0.08; pointer-events:none;}
+.vignette { position: fixed; top:0; left:0; width:100%; height:100%; box-shadow: inset 0 0 200px black; pointer-events:none;}
+
+/* Window */
+.window {
+  width: 400px;
+  background: #111;
+  border: 2px solid #555;
+  box-shadow: 0 0 20px rgba(0,0,0,.8);
+  display:flex;
+  flex-direction:column;
+}
+
+/* Titlebar */
+.titlebar {
+  background:#222;
+  padding:6px 10px;
+  font-size:12px;
+  letter-spacing:2px;
+  display:flex;
+  justify-content:space-between;
+}
+.titlebar .title { color:white; }
+.titlebar .close { color:white; cursor:pointer; font-weight:bold; }
+
+/* Window content */
+.window-body {
+  padding:20px;
+  color:white;
+  font-size:14px;
+  line-height:1.6;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Clickable category buttons */
+.category {
+  background: #222;
+  padding:8px 10px;
+  border:1px solid #555;
+  text-align:center;
+  cursor:pointer;
+  transition: 0.2s;
+}
+.category:hover { opacity:0.7; }
+
+/* Modal pop-up */
+.modal {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  background:#111;
+  border:2px solid #555;
+  box-shadow: 0 0 20px rgba(0,0,0,.8);
+  width: 350px;
+  max-height: 400px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  z-index:10;
+  color: #fff;
+}
+
+/* Modal header draggable */
+.modal .titlebar {
+  cursor: grab;
+}
+
+/* Modal content */
+.modal-body {
+  padding: 15px;
+  color: #fff;
+}
+
+/* List items inside modal */
+.item {
+  padding:5px 0;
+  border-bottom:1px solid #333;
+  color: #fff;
+}
+.item:hover { opacity:0.7; cursor:pointer; }
+</style>
+</head>
+
+<body>
+
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="window">
+  <div class="titlebar">
+    <div class="title">community.html</div>
+    <div class="close" onclick="location.href='home.html'">✖</div>
+  </div>
+  <div class="window-body">
+    <div class="category" onclick="openModal('projects')">Projects</div>
+    <div class="category" onclick="openModal('people')">People</div>
+  </div>
+</div>
+
+<script>
+// Data
+const data = {
+  projects: [
+    "Aoiseikou Racing Division",
+    "Aoiseikou Festival",
+    "Aoiseikou Autoshow",
+    "Aoiseikou Wildstyle"
+  ],
+  people: [
+    {name:"Nex", info:"Founder, Car enthusiast."},
+    {name:"Chyumi", info:"Creative Director."},
+    {name:"Quinton", info:"Server Overseer, Best friend."},
+    {name:"Lucas", info:"Founder of RWD Division."},
+    {name:"Cece", info:"Community promoter."}
+  ]
+};
+
+// Keep track of modals
+let modalCount = 0;
+
+function openModal(category) {
+  modalCount++;
+  
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.style.zIndex = 10 + modalCount;
+  
+  const titlebar = document.createElement('div');
+  titlebar.className = 'titlebar';
+  titlebar.innerHTML = `<div class="title">${category.charAt(0).toUpperCase() + category.slice(1)}</div>
+                        <div class="close">✖</div>`;
+  modal.appendChild(titlebar);
+  
+  const body = document.createElement('div');
+  body.className = 'modal-body';
+  
+  if(category === 'people') {
+    data.people.forEach(person => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.textContent = person.name;
+      div.addEventListener('click', () => {
+        openInfoModal(person.name, person.info);
+      });
+      body.appendChild(div);
+    });
+  } else {
+    data.projects.forEach(proj => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.textContent = proj;
+      body.appendChild(div);
+    });
+  }
+  
+  modal.appendChild(body);
+  document.body.appendChild(modal);
+  
+  // Close button
+  titlebar.querySelector('.close').addEventListener('click', ()=>{ modal.remove(); });
+  
+  // Draggable
+  let isDragging = false, offsetX, offsetY;
+  titlebar.addEventListener('mousedown', e=>{
+    isDragging = true;
+    offsetX = e.clientX - modal.offsetLeft;
+    offsetY = e.clientY - modal.offsetTop;
+    titlebar.style.cursor = 'grabbing';
+  });
+  document.addEventListener('mousemove', e=>{
+    if(isDragging){
+      modal.style.left = (e.clientX - offsetX) + 'px';
+      modal.style.top = (e.clientY - offsetY) + 'px';
+    }
+  });
+  document.addEventListener('mouseup', ()=>{ isDragging = false; titlebar.style.cursor = 'grab'; });
+}
+
+// Nested info modal for people
+function openInfoModal(name, info){
+  modalCount++;
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.style.zIndex = 10 + modalCount;
+  
+  const titlebar = document.createElement('div');
+  titlebar.className = 'titlebar';
+  titlebar.innerHTML = `<div class="title">${name}</div><div class="close">✖</div>`;
+  modal.appendChild(titlebar);
+  
+  const body = document.createElement('div');
+  body.className = 'modal-body';
+  body.textContent = info;
+  modal.appendChild(body);
+  
+  document.body.appendChild(modal);
+  
+  // Close button
+  titlebar.querySelector('.close').addEventListener('click', ()=>{ modal.remove(); });
+  
+  // Draggable
+  let isDragging = false, offsetX, offsetY;
+  titlebar.addEventListener('mousedown', e=>{
+    isDragging = true;
+    offsetX = e.clientX - modal.offsetLeft;
+    offsetY = e.clientY - modal.offsetTop;
+    titlebar.style.cursor = 'grabbing';
+  });
+  document.addEventListener('mousemove', e=>{
+    if(isDragging){
+      modal.style.left = (e.clientX - offsetX) + 'px';
+      modal.style.top = (e.clientY - offsetY) + 'px';
+    }
+  });
+  document.addEventListener('mouseup', ()=>{ isDragging = false; titlebar.style.cursor = 'grab'; });
+}
+</script>
+
+</body>
+</html>

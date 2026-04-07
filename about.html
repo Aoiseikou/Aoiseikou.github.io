@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>about.html</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+@font-face {
+    font-family: "BiondiSans";
+    src: url("biondisans-regular.otf");
+}
+
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* TITLE */
+
+.title{
+    font-family:"BiondiSans";
+    font-size:72px;
+    letter-spacing:12px;
+    margin-bottom:60px;
+}
+
+/* MENU */
+
+.menu{
+    font-family:'Space Mono', monospace;
+    font-size:18px;
+    width:400px;
+}
+
+.menu-item{
+    margin:14px 0;
+    cursor:pointer;
+}
+
+.menu-item:hover{
+    opacity:0.7;
+}
+
+/* CONTENT */
+
+.content{
+    display:none;
+    margin-top:10px;
+    margin-bottom:18px;
+    font-size:14px;
+    line-height:1.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="title">AOISEIKOU</div>
+
+<div class="menu">
+
+<div class="menu-item" onclick="toggle(this,'what')">> what is aoiseikou</div>
+<div id="what" class="content">
+Aoiseikou is a record of what I see and experience in car culture. It’s a space to admire machinery on four wheels—from a Dacia Sandero to a Koenigsegg CC850.
+<br><br>
+Taste is subjective. I have my own, but it doesn’t dictate this space. This is a place to build, drive, share, and add to what already exists. Whatever you see here at the beginning — that’s just how car culture looks to me. You people add your own layers to it.
+</div>
+
+<div class="menu-item" onclick="toggle(this,'origin')">> origin</div>
+<div id="origin" class="content">
+Founded by me and a close circle of enthusiasts, Aoiseikou started as a place to document car culture and save it in a way. What began as a small community gradually evolved into a broader project: documenting culture, building machines, and hosting events.
+</div>
+
+<div class="menu-item" onclick="toggle(this,'pillars')">> pillars</div>
+<div id="pillars" class="content">
+machines — purpose-built cars and experimental builds<br>
+meetlog — documentation of meets and gatherings<br>
+culture — the philosophy, style, and attitude of the community<br>
+community — the people and projects behind Aoiseikou
+</div>
+
+<div class="menu-item" onclick="toggle(this,'vision')">> vision</div>
+<div id="vision" class="content">
+Aoiseikou aims to grow into a larger automotive ecosystem: racing divisions, festivals, shows, and documentation that captures moments of car culture as they happen.
+</div>
+
+<div class="menu-item" onclick="location.href='community.html'">> return</div>
+
+</div>
+
+<script>
+
+function toggle(element, id){
+
+    let content = document.getElementById(id);
+
+    if(content.style.display === "block"){
+
+        content.style.display = "none";
+        element.innerHTML = element.innerHTML.replace("v","&gt;");
+
+    } else {
+
+        content.style.display = "block";
+        element.innerHTML = element.innerHTML.replace("&gt;","v");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

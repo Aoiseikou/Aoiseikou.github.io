@@ -8,9 +8,11 @@
 
 <style>
 
-@font-face {
-    font-family: "BiondiSans";
-    src: url("biondisans-regular.otf");
+@font-face{
+    font-family:"BiondiSans";
+    src:url("fonts/biondisans-regular.otf") format("opentype");
+    font-weight:normal;
+    font-style:normal;
 }
 
 body{
@@ -27,7 +29,7 @@ body{
 /* TITLE */
 
 .title{
-    font-family:"BiondiSans";
+    font-family:"BiondiSans", sans-serif;
     font-size:72px;
     letter-spacing:12px;
     margin-bottom:60px;
@@ -100,20 +102,16 @@ Aoiseikou aims to grow into a larger automotive ecosystem: racing divisions, fes
 
 <script>
 
-function toggle(element, id){
+function toggle(element,id){
 
-    let content = document.getElementById(id);
+    let content=document.getElementById(id);
 
-    if(content.style.display === "block"){
-
-        content.style.display = "none";
-        element.innerHTML = element.innerHTML.replace("v","&gt;");
-
-    } else {
-
-        content.style.display = "block";
-        element.innerHTML = element.innerHTML.replace("&gt;","v");
-
+    if(content.style.display==="block"){
+        content.style.display="none";
+        element.innerHTML="> "+element.textContent.slice(2);
+    }else{
+        content.style.display="block";
+        element.innerHTML="v "+element.textContent.slice(2);
     }
 
 }

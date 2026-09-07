@@ -1,0 +1,1098 @@
+/* =========================================================
+   AOISEIKOU — UNKNOWN STORAGE
+   STORAGE X—00
+========================================================= */
+
+:root {
+
+    --bg: #101a25;
+    --bg-light: #15212d;
+    --surface: #162330;
+    --surface-light: #1b2a38;
+
+    --ink: #eef2f5;
+    --muted: rgba(238,242,245,.48);
+
+    --blue: #78a8ee;
+    --blue-dark: #4f79b7;
+
+    --line: rgba(255,255,255,.11);
+    --line-blue: rgba(120,168,238,.25);
+
+    --mono: "Courier New", monospace;
+    --sans: Arial, Helvetica, sans-serif;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: var(--bg);
+
+    color: var(--ink);
+
+    font-family: var(--sans);
+
+}
+
+
+button {
+
+    font: inherit;
+
+    color: inherit;
+
+    border: 0;
+
+    background: none;
+
+    cursor: pointer;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    position: fixed;
+
+    z-index: 100;
+
+    inset: 0 0 auto;
+
+    min-height: 62px;
+
+    padding: 0 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid var(--line);
+
+    background:
+        rgba(16,26,37,.94);
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.brand-mark {
+
+    width: 31px;
+
+    height: 31px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid var(--blue);
+
+    color: var(--blue);
+
+    font: 700 10px var(--mono);
+
+}
+
+
+.brand-name {
+
+    font-size: 13px;
+
+    letter-spacing: .03em;
+
+}
+
+
+.top-center {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.status {
+
+    color: var(--blue);
+
+}
+
+
+.status i {
+
+    display: inline-block;
+
+    width: 6px;
+
+    height: 6px;
+
+    margin-right: 4px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+}
+
+
+.top-right {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 15px;
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.top-right button:hover {
+
+    color: var(--blue);
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.unknown {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 125px 40px 80px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 78% 33%,
+            rgba(46,77,112,.14),
+            transparent 31%
+        ),
+
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        auto,
+        42px 42px,
+        42px 42px;
+
+}
+
+
+.unknown::before {
+
+    content:
+        "?";
+
+    position:
+        absolute;
+
+    z-index:
+        0;
+
+    top:
+        8%;
+
+    right:
+        5%;
+
+    color:
+        rgba(120,168,238,.035);
+
+    font:
+        900
+        clamp(350px,50vw,700px)
+        /
+        .65
+        var(--sans);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    max-width:
+        1050px;
+
+}
+
+
+.intro-kicker {
+
+    margin-bottom:
+        12px;
+
+    color:
+        var(--blue);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.intro h1 {
+
+    margin:
+        0;
+
+    color:
+        var(--ink);
+
+    font:
+        900
+        clamp(67px,11vw,150px)
+        /
+        .72
+        var(--sans);
+
+    letter-spacing:
+        -.095em;
+
+}
+
+
+.intro p {
+
+    max-width:
+        510px;
+
+    margin:
+        28px 0 0;
+
+    color:
+        var(--muted);
+
+    font:
+        10px/1.8 var(--mono);
+
+}
+
+
+.intro-meta {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        18px;
+
+    margin-top:
+        17px;
+
+    color:
+        var(--blue);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.recovered {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    margin-top:
+        110px;
+
+}
+
+
+.section-head {
+
+    display:
+        flex;
+
+    align-items:
+        baseline;
+
+    gap:
+        16px;
+
+    padding:
+        12px 0;
+
+    border-top:
+        1px solid var(--line);
+
+}
+
+
+.section-head > span {
+
+    color:
+        var(--ink);
+
+    font:
+        700 10px var(--mono);
+
+}
+
+
+.section-head small {
+
+    color:
+        var(--muted);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+/* =========================================================
+   RECORDS
+========================================================= */
+
+.unknown-record {
+
+    position:
+        relative;
+
+    min-height:
+        150px;
+
+    padding:
+        20px 0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        80px
+        1.6fr
+        1fr
+        110px;
+
+    align-items:
+        center;
+
+    gap:
+        22px;
+
+    border-bottom:
+        1px solid var(--line);
+
+    transition:
+        background .2s ease,
+        padding .25s ease;
+
+}
+
+
+.unknown-record:hover {
+
+    padding-left:
+        13px;
+
+    padding-right:
+        13px;
+
+    background:
+        rgba(120,168,238,.035);
+
+}
+
+
+.record-number {
+
+    align-self:
+        start;
+
+    padding-top:
+        5px;
+
+    color:
+        var(--blue);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.record-body > span {
+
+    color:
+        var(--muted);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.record-body h2 {
+
+    margin:
+        9px 0 8px;
+
+    font:
+
+        900
+        clamp(35px,5vw,66px)
+        /
+        .78
+        var(--sans);
+
+    letter-spacing:
+        -.08em;
+
+}
+
+
+.record-body p {
+
+    margin:
+        0;
+
+    color:
+        var(--muted);
+
+    font:
+        9px/1.6 var(--mono);
+
+}
+
+
+.record-meta {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
+    color:
+        var(--muted);
+
+    font:
+        7px var(--mono);
+
+}
+
+
+.record-open {
+
+    justify-self:
+        end;
+
+    color:
+        var(--blue);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+.audio-record {
+
+    cursor:
+        default;
+
+}
+
+
+.audio-list {
+
+    margin-top:
+        20px;
+
+    max-width:
+        620px;
+
+    border-top:
+        1px solid var(--line);
+
+}
+
+
+.audio-file {
+
+    min-height:
+        43px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        60px
+        1fr
+        100px;
+
+    gap:
+        15px;
+
+    align-items:
+        center;
+
+    border-bottom:
+        1px solid var(--line);
+
+    color:
+        var(--muted);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.audio-play {
+
+    justify-self:
+        start;
+
+    color:
+        var(--blue);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.audio-play:hover {
+
+    text-decoration:
+        underline;
+
+}
+
+
+.audio-file span:last-child {
+
+    text-align:
+        right;
+
+}
+
+
+/* =========================================================
+   UNKNOWN NOTE
+========================================================= */
+
+.unknown-note {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    max-width:
+        900px;
+
+    margin:
+        100px auto 0;
+
+    padding:
+        22px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        130px
+        1fr;
+
+    gap:
+        25px;
+
+    border:
+        1px dashed
+        var(--line-blue);
+
+    background:
+        rgba(120,168,238,.025);
+
+}
+
+
+.unknown-note > span {
+
+    color:
+        var(--blue);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.unknown-note strong {
+
+    display:
+        block;
+
+    font:
+
+        900
+        clamp(28px,4vw,48px)
+        /
+        .82
+        var(--sans);
+
+    letter-spacing:
+        -.07em;
+
+}
+
+
+.unknown-note p {
+
+    max-width:
+        520px;
+
+    margin:
+        15px 0 0;
+
+    color:
+        var(--muted);
+
+    font:
+        9px/1.7 var(--mono);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    margin-top:
+        120px;
+
+    padding-top:
+        12px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    border-top:
+        1px solid var(--line);
+
+    color:
+        var(--muted);
+
+    font:
+        8px var(--mono);
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    position:
+        fixed;
+
+    z-index:
+        300;
+
+    left:
+        50%;
+
+    bottom:
+        20px;
+
+    padding:
+        10px 12px;
+
+    background:
+        #e7ebef;
+
+    color:
+        #17212b;
+
+    transform:
+        translate(-50%, 20px);
+
+    opacity:
+        0;
+
+    transition:
+        .2s ease;
+
+    font:
+        8px var(--mono);
+
+}
+
+
+.toast.show {
+
+    opacity:
+        1;
+
+    transform:
+        translate(-50%, 0);
+
+}
+
+
+/* =========================================================
+   RANDOM HIGHLIGHT
+========================================================= */
+
+.unknown-record.random-highlight {
+
+    background:
+        rgba(120,168,238,.08);
+
+    outline:
+        1px solid var(--blue);
+
+    outline-offset:
+        -1px;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .topbar {
+
+        grid-template-columns:
+            1fr auto;
+
+    }
+
+
+    .top-center {
+
+        display:
+            none;
+
+    }
+
+
+    .unknown {
+
+        padding:
+            110px 22px 65px;
+
+    }
+
+
+    .unknown::before {
+
+        right:
+            -10%;
+
+        font-size:
+            400px;
+
+    }
+
+
+    .unknown-record {
+
+        grid-template-columns:
+            45px
+            1fr
+            100px;
+
+        gap:
+            15px;
+
+    }
+
+
+    .record-meta {
+
+        display:
+            none;
+
+    }
+
+
+    .unknown-note {
+
+        grid-template-columns:
+            90px
+            1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+
+    .topbar {
+
+        padding:
+            9px 15px;
+
+    }
+
+
+    .brand-name {
+
+        display:
+            none;
+
+    }
+
+
+    .top-right {
+
+        gap:
+            10px;
+
+    }
+
+
+    .unknown {
+
+        padding:
+            105px 15px 55px;
+
+    }
+
+
+    .unknown::before {
+
+        top:
+            15%;
+
+        right:
+            -15%;
+
+        font-size:
+            300px;
+
+    }
+
+
+    .intro h1 {
+
+        font-size:
+            clamp(55px,17vw,100px);
+
+    }
+
+
+    .recovered {
+
+        margin-top:
+            75px;
+
+    }
+
+
+    .unknown-record {
+
+        min-height:
+            105px;
+
+        grid-template-columns:
+            30px
+            1fr
+            55px;
+
+        gap:
+            10px;
+
+    }
+
+
+    .record-body h2 {
+
+        font-size:
+            clamp(27px,8vw,43px);
+
+    }
+
+
+    .record-open {
+
+        font-size:
+            7px;
+
+    }
+
+
+    .audio-list {
+
+        max-width:
+            100%;
+
+    }
+
+
+    .audio-file {
+
+        grid-template-columns:
+            50px
+            1fr
+            70px;
+
+        gap:
+            8px;
+
+    }
+
+
+    .unknown-note {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            12px;
+
+        margin-top:
+            70px;
+
+    }
+
+
+    .footer {
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+
+    }
+
+}

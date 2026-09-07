@@ -1,0 +1,1479 @@
+/* =========================================================
+   AOISEIKOU — ABOUT
+   CURRENT PROJECT / PEOPLE / WINGS
+========================================================= */
+
+
+:root {
+
+    --bg: #e7ebef;
+
+    --surface: #edf1f4;
+    --surface-light: #f4f6f7;
+    --surface-dark: #cfd6dc;
+
+    --ink: #17212b;
+    --muted: #6d7983;
+
+    --blue: #1767d9;
+    --blue-dark: #0f4ca5;
+    --blue-light: #dce9f8;
+
+    --line: rgba(23, 33, 43, .17);
+    --line-blue: rgba(23, 103, 217, .28);
+
+    --mono: "Courier New", monospace;
+    --sans: Arial, Helvetica, sans-serif;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: var(--bg);
+
+    color: var(--ink);
+
+    font-family: var(--sans);
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    position: fixed;
+
+    z-index: 100;
+
+    inset: 0 0 auto;
+
+    min-height: 62px;
+
+    padding: 0 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid var(--line);
+
+    background: rgba(231,235,239,.95);
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    width: fit-content;
+
+    font-weight: 800;
+
+}
+
+
+.brand-mark {
+
+    width: 31px;
+
+    height: 31px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid var(--ink);
+
+    color: var(--blue);
+
+    font: 700 10px var(--mono);
+
+}
+
+
+.brand-name {
+
+    font-size: 13px;
+
+    letter-spacing: .03em;
+
+}
+
+
+.top-center {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.status {
+
+    color: var(--blue);
+
+}
+
+
+.status i {
+
+    display: inline-block;
+
+    width: 6px;
+
+    height: 6px;
+
+    margin-right: 4px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+}
+
+
+.top-right {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 15px;
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.top-right a:hover {
+
+    color: var(--blue);
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.about {
+
+    position: relative;
+
+    padding: 125px 40px 100px;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            rgba(23,33,43,.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(23,33,43,.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 42px 42px;
+
+}
+
+
+.about::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    background: var(--line-blue);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.about-intro {
+
+    position: relative;
+
+    max-width: 1100px;
+
+    margin: 0 auto 110px;
+
+}
+
+
+.about-kicker {
+
+    color: var(--blue);
+
+    font: 700 9px var(--mono);
+
+}
+
+
+.about-intro h1 {
+
+    margin: 25px 0 0;
+
+    max-width: 1100px;
+
+    font:
+        900
+        clamp(75px, 12vw, 155px)
+        /
+        .76
+        var(--sans);
+
+    letter-spacing: -.095em;
+
+}
+
+
+.intro-text {
+
+    max-width: 700px;
+
+    margin: 30px 0 0;
+
+    color: var(--muted);
+
+    font: 11px/1.8 var(--mono);
+
+}
+
+
+.intro-note {
+
+    max-width: 760px;
+
+    margin-top: 38px;
+
+    padding-top: 14px;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 20px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.intro-note span {
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.intro-note strong {
+
+    color: var(--blue);
+
+    font:
+        900
+        clamp(18px, 3vw, 30px)
+        /
+        1
+        var(--sans);
+
+    letter-spacing: -.04em;
+
+}
+
+
+/* =========================================================
+   STATEMENT
+========================================================= */
+
+.about-statement {
+
+    position: relative;
+
+    max-width: 1100px;
+
+    margin: 0 auto 115px;
+
+    padding-top: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+        70px
+        minmax(0, 700px);
+
+    gap: 35px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.section-number {
+
+    color: var(--blue);
+
+    font: 700 9px var(--mono);
+
+}
+
+
+.statement-content {
+
+    min-width: 0;
+
+}
+
+
+.statement-content p {
+
+    margin: 20px 0 0;
+
+    max-width: 700px;
+
+    font: 16px/1.8 var(--sans);
+
+}
+
+
+.statement-content p:first-child {
+
+    margin-top: 0;
+
+}
+
+
+.statement-large {
+
+    color: var(--blue-dark);
+
+    font:
+        700
+        clamp(26px, 4vw, 45px)
+        /
+        1.1
+        var(--sans) !important;
+
+    letter-spacing: -.045em;
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+
+    position: relative;
+
+    margin-bottom: 38px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.section-heading span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--blue);
+
+    font: 700 8px var(--mono);
+
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    max-width: 100%;
+
+    font:
+        900
+        clamp(42px, 6vw, 72px)
+        /
+        .8
+        var(--sans);
+
+    letter-spacing: -.08em;
+
+    overflow-wrap: break-word;
+
+}
+
+
+/* =========================================================
+   PEOPLE
+========================================================= */
+
+.people-section {
+
+    max-width: 1100px;
+
+    margin: 0 auto 115px;
+
+}
+
+
+.people-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+
+}
+
+
+/* =========================================================
+   PERSON CARD
+========================================================= */
+
+.person-card {
+
+    min-width: 0;
+
+    min-height: 460px;
+
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border: 1px solid var(--line);
+
+    background: rgba(244,246,247,.78);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+
+}
+
+
+.person-card:hover {
+
+    transform: translateY(-5px);
+
+    background: var(--blue-light);
+
+    border-color: var(--line-blue);
+
+}
+
+
+/* TOP */
+
+.person-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+}
+
+
+.person-index {
+
+    flex-shrink: 0;
+
+    color: var(--blue);
+
+    font: 700 8px var(--mono);
+
+}
+
+
+.person-role {
+
+    max-width: 150px;
+
+    color: var(--muted);
+
+    font: 7px/1.4 var(--mono);
+
+    text-align: right;
+
+}
+
+
+/* MAIN */
+
+.person-main {
+
+    min-width: 0;
+
+    margin-top: 40px;
+
+}
+
+
+.person-main h3 {
+
+    margin: 0;
+
+    max-width: 100%;
+
+    color: var(--ink);
+
+    font:
+        900
+        clamp(42px, 5vw, 62px)
+        /
+        .8
+        var(--sans);
+
+    letter-spacing: -.075em;
+
+    overflow-wrap: anywhere;
+
+}
+
+
+.person-main p {
+
+    max-width: 360px;
+
+    margin: 19px 0 0;
+
+    color: var(--muted);
+
+    font: 10px/1.7 var(--mono);
+
+}
+
+
+.person-main p + p {
+
+    margin-top: 16px;
+
+}
+
+
+/* FOCUS */
+
+.person-focus {
+
+    margin-top: 25px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.person-focus span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font: 7px var(--mono);
+
+}
+
+
+.person-focus strong {
+
+    display: block;
+
+    color: var(--blue);
+
+    font: 700 8px/1.5 var(--mono);
+
+}
+
+
+/* BOTTOM */
+
+.person-bottom {
+
+    padding-top: 12px;
+
+    border-top: 1px solid var(--line);
+
+    color: var(--muted);
+
+    font: 7px var(--mono);
+
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
+
+.about-section {
+
+    max-width: 1100px;
+
+    margin: 0 auto 115px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 280px)
+        minmax(0, 720px);
+
+    gap: 55px;
+
+}
+
+
+.about-section > .section-heading {
+
+    margin: 0;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.section-content {
+
+    min-width: 0;
+
+}
+
+
+.large-copy {
+
+    margin: 0;
+
+    color: var(--blue-dark);
+
+    font:
+        700
+        clamp(25px, 4vw, 43px)
+        /
+        1.1
+        var(--sans);
+
+    letter-spacing: -.045em;
+
+}
+
+
+.section-content > p:not(.large-copy) {
+
+    max-width: 690px;
+
+    margin: 25px 0 0;
+
+    color: var(--ink);
+
+    font: 16px/1.8 var(--sans);
+
+}
+
+
+/* =========================================================
+   WINGS
+========================================================= */
+
+.wings-section {
+
+    align-items: start;
+
+}
+
+
+.wings-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 55px;
+
+}
+
+
+.wings-copy p:not(.large-copy) {
+
+    margin-top: 22px;
+
+}
+
+
+/* RULE */
+
+.wings-rule {
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.wing-rule-row {
+
+    min-height: 72px;
+
+    padding: 14px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        105px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 18px;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.wing-rule-row span {
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.wing-rule-row strong {
+
+    color: var(--ink);
+
+    font: 700 10px/1.4 var(--mono);
+
+}
+
+
+.wing-rule-arrow {
+
+    padding: 8px 0;
+
+    color: var(--blue);
+
+    font: 15px var(--mono);
+
+}
+
+
+.muted-row strong {
+
+    color: var(--blue);
+
+}
+
+
+/* =========================================================
+   REPRESENTATION
+========================================================= */
+
+.representation-content {
+
+    max-width: 720px;
+
+}
+
+
+.representation-note {
+
+    margin-top: 40px;
+
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    border: 1px solid var(--line);
+
+    background: var(--surface-light);
+
+}
+
+
+.representation-note span {
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.representation-note strong {
+
+    color: var(--blue);
+
+    font:
+        900
+        clamp(18px, 3vw, 28px)
+        /
+        1
+        var(--sans);
+
+    letter-spacing: -.04em;
+
+}
+
+
+/* =========================================================
+   SITE
+========================================================= */
+
+.site-list {
+
+    margin-top: 35px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.site-row {
+
+    min-height: 76px;
+
+    padding: 15px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        220px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid var(--line);
+
+    transition:
+        background .2s ease,
+        padding .2s ease;
+
+}
+
+
+.site-row:hover {
+
+    padding-left: 12px;
+
+    background: var(--blue-light);
+
+}
+
+
+.site-row span {
+
+    color: var(--blue);
+
+    font: 700 8px var(--mono);
+
+}
+
+
+.site-row strong {
+
+    color: var(--muted);
+
+    font: 8px/1.5 var(--mono);
+
+}
+
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.about-closing {
+
+    max-width: 1100px;
+
+    margin: 15px auto 0;
+
+    text-align: center;
+
+}
+
+
+.closing-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-bottom: 40px;
+
+    background: var(--line);
+
+}
+
+
+.about-closing p {
+
+    margin: 0;
+
+    color: var(--ink);
+
+    font:
+        900
+        clamp(28px, 5vw, 60px)
+        /
+        .9
+        var(--sans);
+
+    letter-spacing: -.07em;
+
+}
+
+
+.about-closing span {
+
+    display: block;
+
+    margin-top: 16px;
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.about-closing strong {
+
+    display: block;
+
+    margin-top: 26px;
+
+    color: var(--blue);
+
+    font: 700 9px var(--mono);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 25px 0 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-top: 1px solid var(--line);
+
+    color: var(--muted);
+
+    font: 8px var(--mono);
+
+}
+
+
+.footer a:hover {
+
+    color: var(--blue);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .topbar {
+
+        grid-template-columns:
+            1fr
+            auto;
+
+    }
+
+
+    .top-center {
+
+        display: none;
+
+    }
+
+
+    .about {
+
+        padding:
+            110px 22px 75px;
+
+    }
+
+
+    .about::before {
+
+        display: none;
+
+    }
+
+
+    .about-intro {
+
+        margin-bottom:
+            80px;
+
+    }
+
+
+    .people-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .person-card {
+
+        min-height:
+            340px;
+
+    }
+
+
+    .about-section {
+
+        grid-template-columns:
+            170px
+            minmax(0, 1fr);
+
+        gap:
+            30px;
+
+    }
+
+
+    .wings-layout {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            45px;
+
+    }
+
+
+    .site-row {
+
+        grid-template-columns:
+            170px
+            minmax(0, 1fr);
+
+    }
+
+
+    .footer {
+
+        margin:
+            0 22px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+
+    .topbar {
+
+        padding:
+            0 15px;
+
+    }
+
+
+    .brand-name {
+
+        display:
+            none;
+
+    }
+
+
+    .top-right {
+
+        gap:
+            10px;
+
+    }
+
+
+    .about {
+
+        padding:
+            105px 15px 55px;
+
+    }
+
+
+    .about-intro {
+
+        margin-bottom:
+            65px;
+
+    }
+
+
+    .about-intro h1 {
+
+        font-size:
+            clamp(52px, 17vw, 90px);
+
+    }
+
+
+    .intro-text {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .intro-note {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+
+    }
+
+
+    .about-statement {
+
+        display:
+            block;
+
+        margin-bottom:
+            80px;
+
+    }
+
+
+    .section-number {
+
+        margin-bottom:
+            22px;
+
+    }
+
+
+    .statement-content p {
+
+        font-size:
+            15px;
+
+        line-height:
+            1.75;
+
+    }
+
+
+    .statement-large {
+
+        font-size:
+            25px !important;
+
+    }
+
+
+    .section-heading {
+
+        margin-bottom:
+            30px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size:
+            clamp(38px, 12vw, 62px);
+
+    }
+
+
+    .people-section,
+    .wings-section,
+    .about-section {
+
+        margin-bottom:
+            80px;
+
+    }
+
+
+    .person-card {
+
+        min-height:
+            0;
+
+    }
+
+
+    .person-main {
+
+        margin-top:
+            28px;
+
+    }
+
+
+    .person-main h3 {
+
+        font-size:
+            clamp(44px, 15vw, 70px);
+
+    }
+
+
+    .person-main p {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .about-section {
+
+        display:
+            block;
+
+    }
+
+
+    .about-section > .section-heading {
+
+        margin-bottom:
+            30px;
+
+    }
+
+
+    .wings-layout {
+
+        gap:
+            35px;
+
+    }
+
+
+    .wings-large,
+    .large-copy {
+
+        font-size:
+            25px;
+
+    }
+
+
+    .section-content > p:not(.large-copy) {
+
+        font-size:
+            15px;
+
+        line-height:
+            1.75;
+
+    }
+
+
+    .wing-rule-row {
+
+        grid-template-columns:
+            90px
+            minmax(0, 1fr);
+
+    }
+
+
+    .site-row {
+
+        display:
+            block;
+
+        padding:
+            17px 0;
+
+    }
+
+
+    .site-row span {
+
+        display:
+            block;
+
+        margin-bottom:
+            8px;
+
+    }
+
+
+    .site-row strong {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .about-closing {
+
+        margin-top:
+            15px;
+
+    }
+
+
+    .about-closing p {
+
+        font-size:
+            clamp(28px, 10vw, 48px);
+
+    }
+
+
+    .footer {
+
+        margin:
+            0 15px;
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+    }
+
+}

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Audios — AOISEIKOU</title>
+
+    <link
+        rel="stylesheet"
+        href="css/audios.css"
+    >
+
+    <script
+        src="js/audios.js"
+        defer
+    ></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <a
+            href="home.html"
+            class="brand"
+        >
+
+            <span class="brand-mark">
+                AOI
+            </span>
+
+            <span class="brand-name">
+                AOISEIKOU
+            </span>
+
+        </a>
+
+
+        <div class="top-center">
+
+            <span class="status">
+
+                <i></i>
+
+                ONLINE
+
+            </span>
+
+            <span>
+                AUDIO LIBRARY
+            </span>
+
+        </div>
+
+
+        <div class="top-right">
+
+            <span id="clock">
+                00:00:00
+            </span>
+
+            <a
+                href="#"
+                id="shuffle"
+            >
+                SHUFFLE
+            </a>
+
+            <a href="media.html">
+                MEDIA
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="audio-page">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <section class="audio-header">
+
+            <div class="audio-kicker">
+                AOISEIKOU / MEDIA / 04
+            </div>
+
+
+            <div class="audio-header-row">
+
+                <div>
+
+                    <h1>
+                        AUDIOS
+                    </h1>
+
+
+                    <p>
+                        A shelf of things worth hearing.
+                        Music, cars, conversations, field recordings,
+                        strange sounds and everything in between.
+                    </p>
+
+                </div>
+
+
+                <div class="audio-count">
+
+                    <span>
+                        RECORDINGS
+                    </span>
+
+                    <strong id="audio-count">
+                        000
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AUDIO ROOM
+        ================================================== -->
+
+        <section class="audio-room">
+
+
+            <!-- =================================================
+                 LIBRARY
+            ================================================== -->
+
+            <div class="library-wrap">
+
+
+                <div class="library-header">
+
+                    <div>
+
+                        <span class="library-title">
+                            AUDIO LIBRARY
+                        </span>
+
+                        <span class="library-subtitle">
+                            SELECT A RECORDING
+                        </span>
+
+                    </div>
+
+
+                    <span class="library-path">
+                        /MEDIA/AUDIOS/
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SHELF
+
+                     ADD AUDIO:
+                     COPY ONE .audio-spine BLOCK
+
+                     CHANGE:
+                     - data-title
+                     - data-type
+                     - data-year
+                     - data-file
+                     - data-description
+                     - number
+                ================================================== -->
+
+                <div
+                    class="library-shelf"
+                    id="library-shelf"
+                >
+
+
+                    <!-- =================================================
+                         AUDIO 001
+                    ================================================== -->
+
+                    <article
+                        class="audio-spine"
+                        data-number="001"
+                        data-title="Night Drive"
+                        data-type="MUSIC"
+                        data-year="2026"
+                        data-file="media/audios/audio-001.mp3"
+                        data-description="A piece of music kept from a night worth remembering."
+                    >
+
+                        <div class="spine-face">
+
+                            <span class="spine-number">
+                                001
+                            </span>
+
+                            <span class="spine-type">
+                                MUSIC
+                            </span>
+
+                            <span class="spine-title">
+                                NIGHT DRIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="spine-detail">
+
+                            <span class="detail-type">
+                                MUSIC · 2026
+                            </span>
+
+                            <strong>
+                                NIGHT DRIVE
+                            </strong>
+
+                            <span class="detail-description">
+                                A piece of music kept from a night worth remembering.
+                            </span>
+
+                            <span class="detail-file">
+                                AUDIO—001
+                            </span>
+
+                            <span class="detail-action">
+                                CLICK TO LOAD
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         AUDIO 002
+                    ================================================== -->
+
+                    <article
+                        class="audio-spine"
+                        data-number="002"
+                        data-title="Engine Start"
+                        data-type="CAR"
+                        data-year="2026"
+                        data-file="media/audios/audio-002.wav"
+                        data-description="A cold engine start recorded from close range."
+                    >
+
+                        <div class="spine-face">
+
+                            <span class="spine-number">
+                                002
+                            </span>
+
+                            <span class="spine-type">
+                                CAR
+                            </span>
+
+                            <span class="spine-title">
+                                ENGINE START
+                            </span>
+
+                        </div>
+
+
+                        <div class="spine-detail">
+
+                            <span class="detail-type">
+                                CAR · 2026
+                            </span>
+
+                            <strong>
+                                ENGINE START
+                            </strong>
+
+                            <span class="detail-description">
+                                A cold engine start recorded from close range.
+                            </span>
+
+                            <span class="detail-file">
+                                AUDIO—002
+                            </span>
+
+                            <span class="detail-action">
+                                CLICK TO LOAD
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         AUDIO 003
+                    ================================================== -->
+
+                    <article
+                        class="audio-spine"
+                        data-number="003"
+                        data-title="Field Recording"
+                        data-type="FIELD"
+                        data-year="2026"
+                        data-file="media/audios/audio-003.mp3"
+                        data-description="A little piece of somewhere that felt worth keeping."
+                    >
+
+                        <div class="spine-face">
+
+                            <span class="spine-number">
+                                003
+                            </span>
+
+                            <span class="spine-type">
+                                FIELD
+                            </span>
+
+                            <span class="spine-title">
+                                FIELD RECORDING
+                            </span>
+
+                        </div>
+
+
+                        <div class="spine-detail">
+
+                            <span class="detail-type">
+                                FIELD · 2026
+                            </span>
+
+                            <strong>
+                                FIELD RECORDING
+                            </strong>
+
+                            <span class="detail-description">
+                                A little piece of somewhere that felt worth keeping.
+                            </span>
+
+                            <span class="detail-file">
+                                AUDIO—003
+                            </span>
+
+                            <span class="detail-action">
+                                CLICK TO LOAD
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         AUDIO 004
+                    ================================================== -->
+
+                    <article
+                        class="audio-spine"
+                        data-number="004"
+                        data-title="Conversation"
+                        data-type="VOICE"
+                        data-year="2026"
+                        data-file="media/audios/audio-004.mp3"
+                        data-description="A conversation recorded somewhere along the way."
+                    >
+
+                        <div class="spine-face">
+
+                            <span class="spine-number">
+                                004
+                            </span>
+
+                            <span class="spine-type">
+                                VOICE
+                            </span>
+
+                            <span class="spine-title">
+                                CONVERSATION
+                            </span>
+
+                        </div>
+
+
+                        <div class="spine-detail">
+
+                            <span class="detail-type">
+                                VOICE · 2026
+                            </span>
+
+                            <strong>
+                                CONVERSATION
+                            </strong>
+
+                            <span class="detail-description">
+                                A conversation recorded somewhere along the way.
+                            </span>
+
+                            <span class="detail-file">
+                                AUDIO—004
+                            </span>
+
+                            <span class="detail-action">
+                                CLICK TO LOAD
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         COPY AN AUDIO SPINE ABOVE THIS LINE
+
+                         AUDIO 005
+                         AUDIO 006
+                         AUDIO 007
+                         ...
+                    ================================================== -->
+
+
+                </div>
+
+
+                <div class="shelf-footer">
+
+                    <span>
+                        AOISEIKOU SOUND COLLECTION
+                    </span>
+
+                    <span>
+                        CLICK / LOAD / LISTEN
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LISTENING DESK
+            ================================================== -->
+
+            <aside
+                class="listening-desk"
+                id="listening-desk"
+            >
+
+
+                <div class="desk-top">
+
+                    <div>
+
+                        <span class="desk-name">
+                            LISTENING DESK
+                        </span>
+
+                        <span class="desk-sub">
+                            AOI / AUDIO CONSOLE
+                        </span>
+
+                    </div>
+
+
+                    <span
+                        class="desk-indicator"
+                        id="desk-indicator"
+                    >
+                        STANDBY
+                    </span>
+
+                </div>
+
+
+
+                <!-- DISPLAY -->
+
+                <div class="desk-display">
+
+
+                    <div class="desk-display-top">
+
+                        <span>
+                            NOW PLAYING
+                        </span>
+
+                        <span id="desk-track-number">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="desk-title">
+
+                        <span id="desk-type">
+                            NO SOURCE
+                        </span>
+
+
+                        <strong id="desk-title">
+                            NOTHING LOADED
+                        </strong>
+
+                    </div>
+
+
+                    <!-- WAVEFORM -->
+
+                    <div
+                        class="desk-waveform"
+                        id="desk-waveform"
+                    >
+                    </div>
+
+
+                    <!-- PROGRESS -->
+
+                    <div class="desk-progress-wrap">
+
+                        <span id="current-time">
+                            00:00
+                        </span>
+
+
+                        <div
+                            class="desk-progress"
+                            id="desk-progress"
+                        >
+
+                            <div
+                                id="desk-progress-fill"
+                            >
+                            </div>
+
+                        </div>
+
+
+                        <span id="total-time">
+                            00:00
+                        </span>
+
+                    </div>
+
+
+                    <p
+                        class="desk-description"
+                        id="desk-description"
+                    >
+                        Select something from the shelf.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CONTROLS -->
+
+                <div class="desk-controls">
+
+
+                    <button
+                        id="previous"
+                        type="button"
+                        aria-label="Previous recording"
+                    >
+                        ◀
+                    </button>
+
+
+                    <button
+                        id="play"
+                        type="button"
+                        class="play-control"
+                    >
+                        PLAY
+                    </button>
+
+
+                    <button
+                        id="next"
+                        type="button"
+                        aria-label="Next recording"
+                    >
+                        ▶
+                    </button>
+
+                </div>
+
+
+
+                <!-- VOLUME -->
+
+                <div class="desk-volume">
+
+                    <span>
+                        VOL
+                    </span>
+
+
+                    <input
+                        id="volume"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value="0.8"
+                    >
+
+
+                    <span id="volume-label">
+                        80
+                    </span>
+
+                </div>
+
+
+
+                <!-- SOURCE -->
+
+                <div class="desk-source">
+
+                    <span>
+                        SOURCE
+                    </span>
+
+
+                    <strong id="desk-source">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <!-- ACTUAL PLAYER -->
+
+                <audio
+                    id="audio-player"
+                    preload="metadata"
+                >
+                </audio>
+
+            </aside>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INFO
+        ================================================== -->
+
+        <section class="audio-info">
+
+
+            <div>
+
+                <span>
+                    STORAGE
+                </span>
+
+                <strong>
+                    /MEDIA/AUDIOS/
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    RECORDINGS
+                </span>
+
+                <strong id="footer-count">
+                    000
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    SYSTEM
+                </span>
+
+                <strong>
+                    ONLINE
+                </strong>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <span>
+            AOISEIKOU / AUDIOS
+        </span>
+
+
+        <a href="media.html">
+            RETURN TO MEDIA
+        </a>
+
+    </footer>
+
+
+</body>
+</html>

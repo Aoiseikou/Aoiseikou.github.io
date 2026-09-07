@@ -1,0 +1,119 @@
+@font-face{
+    font-family:"BiondiSans";
+    src:url("../fonts/biondisans-regular.otf") format("opentype");
+}
+
+/* BASE */
+body{
+    margin:0;
+    font-family:'Space Mono', monospace;
+    background:#05070d;
+    color:#e6edf3;
+    overflow:hidden;
+
+    opacity:0;
+    animation:fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn{
+    to{ opacity:1; }
+}
+
+/* LIGHT RAYS */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+}
+
+.ray{
+    animation:ray 60s ease-in-out infinite;
+    transform-origin:top left;
+}
+
+.r1{ fill:rgba(120,150,255,0.05); }
+.r2{ fill:rgba(120,150,255,0.03); }
+.r3{ fill:rgba(120,150,255,0.02); }
+
+@keyframes ray{
+    50%{ transform:translate(10px,-5px); }
+}
+
+/* noise + vignette */
+.noise{
+    position:fixed;
+    inset:0;
+    background:url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity:0.06;
+    pointer-events:none;
+}
+
+.vignette{
+    position:fixed;
+    inset:0;
+    box-shadow:inset 0 0 200px black;
+    pointer-events:none;
+}
+
+/* brand */
+.brand{
+    position:fixed;
+    top:40px;
+    left:40px;
+    font-family:"BiondiSans";
+    letter-spacing:8px;
+    text-decoration:none;
+    color:white;
+    opacity:0.8;
+}
+
+.brand:hover{
+    opacity:1;
+}
+
+/* center system */
+.center{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+/* title */
+.title{
+    font-family:"BiondiSans";
+    font-size:34px;
+    letter-spacing:6px;
+}
+
+/* subtitle */
+.subtitle{
+    font-size:11px;
+    opacity:0.4;
+    margin-top:10px;
+}
+
+/* main message */
+.message{
+    margin-top:40px;
+    font-size:14px;
+    letter-spacing:6px;
+    opacity:0.7;
+
+    animation:pulse 3s infinite;
+}
+
+.submessage{
+    margin-top:14px;
+    font-size:11px;
+    opacity:0.35;
+    letter-spacing:2px;
+}
+
+@keyframes pulse{
+    0%{ opacity:0.4; }
+    50%{ opacity:0.8; }
+    100%{ opacity:0.4; }
+}

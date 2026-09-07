@@ -1,0 +1,163 @@
+@font-face{
+    font-family:"BiondiSans";
+    src:url("../fonts/biondisans-regular.otf") format("opentype");
+}
+
+body{
+    margin:0;
+    font-family:"Space Mono", monospace;
+    background:#05070d;
+    color:#e6edf3;
+    overflow:hidden;
+}
+
+/* noise + vignette */
+.noise{
+    position:fixed;
+    inset:0;
+    background:url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity:0.05;
+    pointer-events:none;
+}
+
+.vignette{
+    position:fixed;
+    inset:0;
+    box-shadow:inset 0 0 180px black;
+    pointer-events:none;
+}
+
+/* rays */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+}
+
+.ray{
+    animation:move 60s ease-in-out infinite;
+}
+
+.r1{ fill:rgba(120,150,255,0.05); }
+.r2{ fill:rgba(120,150,255,0.03); }
+.r3{ fill:rgba(120,150,255,0.02); }
+
+@keyframes move{
+    50%{ transform:translate(10px,-6px); }
+}
+
+/* brand */
+.brand{
+    position:fixed;
+    top:40px;
+    left:40px;
+    font-family:"BiondiSans";
+    letter-spacing:10px;
+    font-size:28px;
+    text-decoration:none;
+    color:white;
+    opacity:0.8;
+}
+
+/* layout */
+.layout{
+    display:flex;
+    height:100vh;
+    padding:120px 80px;
+    gap:120px;
+}
+
+/* tree */
+.tree{
+    width:260px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.node{
+    cursor:pointer;
+    font-size:14px;
+    opacity:0.5;
+    padding-left:10px;
+    border-left:1px solid rgba(255,255,255,0.1);
+    transition:0.2s;
+}
+
+.node:hover{ opacity:1; }
+
+.node.active{
+    opacity:1;
+    border-left:1px solid white;
+}
+
+.subnodes{
+    margin-left:20px;
+    display:none;
+    flex-direction:column;
+    gap:10px;
+}
+
+.subnodes.show{ display:flex; }
+
+.node.sub{
+    font-size:13px;
+    opacity:0.35;
+}
+
+/* panel */
+.panel{
+    flex:1;
+    max-width:650px;
+}
+
+.panel h1{
+    font-family:"BiondiSans";
+    font-size:28px;
+    letter-spacing:6px;
+    margin-bottom:20px;
+}
+
+/* fade system */
+.panel h1,
+.panel p,
+#extra{
+    transition:opacity 0.18s ease, transform 0.18s ease;
+}
+
+.fade-out{
+    opacity:0;
+    transform:translateY(6px);
+}
+
+.fade-in{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.panel p{
+    font-size:13px;
+    line-height:1.6;
+    opacity:0.75;
+}
+
+#extra{
+    margin-top:25px;
+    font-size:12px;
+    opacity:0.6;
+}
+
+/* PAGE FADE SYSTEM */
+
+body{
+    opacity:0;
+    transition:opacity 0.5s ease;
+}
+
+body.loaded{
+    opacity:1;
+}
+
+body.leaving{
+    opacity:0;
+}

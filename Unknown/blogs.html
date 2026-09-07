@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aoiseikou // Blogs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/home.css">
+
+</head>
+
+<body>
+
+<!-- LIGHT RAYS -->
+<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" class="bg">
+    <polygon points="-200,-200 600,0 1200,900 300,900" class="ray r1"/>
+    <polygon points="-200,-200 800,0 1400,900 700,900" class="ray r2"/>
+    <polygon points="-200,-200 900,0 1440,900 1100,900" class="ray r3"/>
+    <polygon points="-200,-200 1050,0 1440,700 1300,900" class="ray r4"/>
+</svg>
+
+<!-- HEADER (shell) -->
+<div class="header">
+    <a class="logo" data-link="home.html">AOISEIKOU</a>
+    <div class="tagline">#DocumentingCulture<span class="caret">_</span></div>
+</div>
+
+<div class="hub" id="content">
+
+    <!-- page-specific stylesheet -->
+    <link rel="stylesheet" href="css/blogs.css">
+
+    <div class="page-container">
+
+        <div class="page-title">Blogs</div>
+        <div class="page-subtitle">Written records from within the system.</div>
+
+        <div class="blog-grid">
+
+            <a class="blog-tile" href="https://aoiseikou.medium.com/blog-001-introducing-blogs-db297644e6f2" target="_blank"
+               data-title="Blog 001 — Introducing Blogs" data-desc="If cars can tell stories, someone has to write them down.">
+                <span class="blog-tile-index">001</span>
+                <div class="blog-tile-inner">
+                    <div class="blog-tile-face blog-tile-face--front">
+                        <span class="blog-tile-title">Introducing Blogs!</span>
+                    </div>
+                    <div class="blog-tile-face blog-tile-face--back">
+                        <span class="blog-tile-desc">If cars can tell stories, someone has to write them down.</span>
+                    </div>
+                </div>
+            </a>
+
+            <a class="blog-tile" href="https://aoiseikou.medium.com/blog-003-ants-amg-gt-black-series-0307e6ed41e5" target="_blank"
+               data-title="Blog 002 — Ant's AMG GT Black Series" data-desc="Rules were never part of the blueprint.">
+                <span class="blog-tile-index">002</span>
+                <div class="blog-tile-inner">
+                    <div class="blog-tile-face blog-tile-face--front">
+                        <span class="blog-tile-title">Ant's AMG GT Black Series</span>
+                    </div>
+                    <div class="blog-tile-face blog-tile-face--back">
+                        <span class="blog-tile-desc">Rules were never part of the blueprint.</span>
+                    </div>
+                </div>
+            </a>
+
+            <a class="blog-tile" href="https://aoiseikou.medium.com/blog-003-mias-bmw-m5-33d2cd57a60e" target="_blank"
+               data-title="Blog 003 — Mia's BMW M5" data-desc="Staying sideways.">
+                <span class="blog-tile-index">003</span>
+                <div class="blog-tile-inner">
+                    <div class="blog-tile-face blog-tile-face--front">
+                        <span class="blog-tile-title">Mia's BMW M5</span>
+                    </div>
+                    <div class="blog-tile-face blog-tile-face--back">
+                        <span class="blog-tile-desc">Staying sideways.</span>
+                    </div>
+                </div>
+            </a>
+
+            <a class="blog-tile" href="https://aoiseikou.medium.com/blog-004-1st-roll-06d50ca8e0b8" target="_blank"
+               data-title="Blog 004 — 1st Roll" data-desc="My experience in learning the shape of a scene.">
+                <span class="blog-tile-index">004</span>
+                <div class="blog-tile-inner">
+                    <div class="blog-tile-face blog-tile-face--front">
+                        <span class="blog-tile-title">1st Roll</span>
+                    </div>
+                    <div class="blog-tile-face blog-tile-face--back">
+                        <span class="blog-tile-desc">My experience in learning the shape of a scene.</span>
+                    </div>
+                </div>
+            </a>
+
+            <a class="blog-tile" href="https://aoiseikou.medium.com/blog-005-the-true-beginning-4cca317a4116" target="_blank"
+               data-title="Blog 005 — The True Beginning" data-desc="The first ever Aoiseikou Festival.">
+                <span class="blog-tile-index">005</span>
+                <div class="blog-tile-inner">
+                    <div class="blog-tile-face blog-tile-face--front">
+                        <span class="blog-tile-title">The True Beginning</span>
+                    </div>
+                    <div class="blog-tile-face blog-tile-face--back">
+                        <span class="blog-tile-desc">The first ever Aoiseikou Festival.</span>
+                    </div>
+                </div>
+            </a>
+
+            <a class="blog-tile" href="https://aoiseikou.medium.com/blog-006-senka-47-rcnc-autoshow-1fb4360f04da" target="_blank"
+               data-title="Blog 006 — Senka 47 × RCNC Autoshow" data-desc="One autoshow, different directions.">
+                <span class="blog-tile-index">006</span>
+                <div class="blog-tile-inner">
+                    <div class="blog-tile-face blog-tile-face--front">
+                        <span class="blog-tile-title">Senka 47 × RCNC Autoshow</span>
+                    </div>
+                    <div class="blog-tile-face blog-tile-face--back">
+                        <span class="blog-tile-desc">One autoshow, different directions.</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- page-specific behavior: live tile flip + wiring hover to the shared preview widget -->
+    <script src="js/blogs.js"></script>
+
+</div>
+
+<!-- SIDEBAR (shell) -->
+<aside class="sidebar">
+
+    <!-- WIDGET: PREVIEW -->
+    <div class="widget widget--preview">
+        <div class="widget-head">
+            <span class="widget-label">PREVIEW</span>
+            <span class="widget-dot"></span>
+        </div>
+        <div class="preview">
+            <div id="p-title">—</div>
+            <div id="p-desc">—</div>
+            <div id="p-cat">—</div>
+        </div>
+    </div>
+
+    <!-- WIDGET: MUSIC -->
+    <div class="widget widget--player" id="player">
+        <div class="widget-head">
+            <span class="widget-label">NOW PLAYING</span>
+            <span class="widget-dot widget-dot--live"></span>
+        </div>
+
+        <canvas id="visualizer" class="visualizer"></canvas>
+
+        <div class="player-meta">
+            <span id="trackTitle">ambient_loop</span>
+            <span id="trackSub">placeholder · press space to play</span>
+        </div>
+
+        <div class="player-row player-controls">
+            <button id="playBtn" class="player-btn player-btn--play">▶</button>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="55">
+            <button id="loadTrackBtn" class="player-btn player-btn--text">+ load</button>
+        </div>
+        <input type="file" id="fileInput" accept="audio/*" hidden>
+    </div>
+
+</aside>
+
+<script src="js/router.js"></script>
+<script src="js/home.js"></script>
+<script src="js/player.js"></script>
+
+</body>
+</html>

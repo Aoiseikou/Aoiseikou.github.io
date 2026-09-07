@@ -1,0 +1,368 @@
+@font-face{
+    font-family:"BiondiSans";
+    src:url("../fonts/biondisans-regular.otf") format("opentype");
+}
+
+/* BASE */
+
+body{
+    margin:0;
+    background:#05070d;
+    color:#e6edf3;
+    font-family:'Space Mono', monospace;
+    overflow:hidden;
+    opacity:0;
+    animation:fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn{ to{ opacity:1; } }
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity:0.05;
+    pointer-events:none;
+    z-index:50;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    box-shadow:inset 0 0 160px black;
+    pointer-events:none;
+    z-index:50;
+}
+
+/* RAYS */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    transition:transform 0.6s ease-out;
+}
+
+.ray{ animation:ray 60s ease-in-out infinite; }
+.r1{ fill:rgba(120,150,255,0.05); }
+.r2{ fill:rgba(120,150,255,0.03); }
+.r3{ fill:rgba(120,150,255,0.02); }
+.r4{ fill:rgba(120,150,255,0.015); }
+
+@keyframes ray{ 50%{ transform:translate(10px,-5px); } }
+
+/* HEADER — small, top-left, logo links home */
+
+.header{
+    position:fixed;
+    top:40px;
+    left:50px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    z-index:20;
+}
+
+.logo{
+    font-family:"BiondiSans";
+    font-size:20px;       /* was 40px — much smaller now */
+    letter-spacing:8px;
+    color:#e6edf3;
+    text-decoration:none;
+    opacity:0.7;
+    cursor:pointer;
+    transition:0.2s ease;
+    display:block;
+}
+
+.logo:hover{
+    opacity:1;
+    transform:translateY(-1px);
+}
+
+.tagline{
+    font-size:9px;
+    opacity:0.3;
+    letter-spacing:2px;
+}
+
+.caret{
+    display:inline-block;
+    animation:blink 1s steps(1) infinite;
+}
+
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* LAYOUT */
+
+.hub{
+    /* left pad accounts for header; right pad accounts for sidebar */
+    padding:160px 340px 60px 50px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+/* CONTAINER */
+
+.container{
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+}
+
+/* CATEGORY */
+
+.category{
+    opacity:0.25;
+    transition:0.2s;
+}
+
+.category.active{ opacity:1; }
+
+.cat-title{
+    font-size:11px;
+    letter-spacing:4px;
+    opacity:0.5;
+    margin-bottom:16px;
+}
+
+/* HOME TILES (the underline navigation on the hub page) */
+
+.tiles{
+    display:flex;
+    gap:80px;
+    padding-right:40px;
+}
+
+.tile{
+    position:relative;
+    min-width:160px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-size:14px;
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.tile:hover{ opacity:0.7; }
+
+.tile::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-1px;
+    height:1px;
+    width:0;
+    background:#fff;
+    transition:width 0.25s ease;
+}
+
+.tile.focused::after{ width:100%; }
+
+/* ============================================================
+   SIDEBAR — persistent widget panel
+   ============================================================ */
+
+.sidebar{
+    position:fixed;
+    right:40px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    width:260px;
+    z-index:20;
+}
+
+.widget{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px;
+    padding:16px 18px;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    transition:border-color 0.2s ease, background 0.2s ease;
+}
+
+.widget:hover{
+    border-color:rgba(120,150,255,0.3);
+    background:rgba(255,255,255,0.045);
+}
+
+.widget-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.widget-label{
+    font-size:10px;
+    letter-spacing:3px;
+    opacity:0.4;
+}
+
+.widget-dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+}
+
+.widget-dot--live{
+    background:rgba(120,150,255,0.9);
+    box-shadow:0 0 6px rgba(120,150,255,0.6);
+    animation:livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse{
+    0%, 100%{ opacity:0.5; }
+    50%{ opacity:1; }
+}
+
+/* ============================================================
+   PREVIEW WIDGET — hidden on pages that don't need it.
+   The router sets body[data-page] on every navigation.
+   ============================================================ */
+
+.widget--preview{ display:flex; flex-direction:column; }
+
+body[data-page="blogs.html"] .widget--preview,
+body[data-page="radio.html"] .widget--preview{
+    display:none;
+}
+
+#p-title{ font-size:16px; margin-bottom:6px; }
+#p-desc{ font-size:12px; opacity:0.6; }
+#p-cat{ margin-top:8px; font-size:10px; opacity:0.3; }
+
+.preview.pulse{ animation:previewIn 0.3s ease; }
+
+@keyframes previewIn{
+    from{ opacity:0.2; transform:translateX(4px); }
+    to{ opacity:1; transform:translateX(0); }
+}
+
+/* ============================================================
+   MUSIC WIDGET — expands when preview is hidden so it fills
+   the space naturally
+   ============================================================ */
+
+.player-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.visualizer{
+    display:block;
+    width:100%;
+    height:44px;
+    margin-bottom:10px;
+}
+
+/* taller visualizer on pages where preview widget is hidden */
+body[data-page="blogs.html"] .visualizer,
+body[data-page="radio.html"] .visualizer{
+    height:80px;
+}
+
+.player-meta{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    margin-bottom:2px;
+}
+
+#trackTitle{ font-size:13px; opacity:0.85; }
+#trackSub{ font-size:10px; opacity:0.35; letter-spacing:1px; }
+
+.player-controls{ margin-top:12px; justify-content:space-between; }
+
+.player-btn{
+    background:none;
+    border:none;
+    color:#e6edf3;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    opacity:0.5;
+    padding:0;
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.player-btn:hover{ opacity:1; }
+.player-btn--play{ opacity:0.85; }
+.player-btn--text{ font-size:10px; letter-spacing:1px; opacity:0.3; }
+.player-btn--text:hover{ opacity:0.8; }
+
+.volume-slider{
+    flex:1;
+    appearance:none;
+    height:1px;
+    background:rgba(255,255,255,0.12);
+    outline:none;
+    cursor:pointer;
+}
+
+.volume-slider::-webkit-slider-thumb{
+    appearance:none;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:rgba(120,150,255,0.9);
+    cursor:pointer;
+}
+
+.volume-slider::-moz-range-thumb{
+    width:6px; height:6px;
+    border:none; border-radius:50%;
+    background:rgba(120,150,255,0.9);
+    cursor:pointer;
+}
+
+/* ============================================================
+   PAGE LAYOUT SHARED (used by blogs, radio, etc.)
+   ============================================================ */
+
+.page-container{
+    padding: 120px 0 60px 50px;
+    max-width:calc(100vw - 360px); /* leave room for sidebar */
+}
+
+.page-title{
+    font-family:"BiondiSans";
+    font-size:28px;
+    letter-spacing:5px;
+    margin-bottom:8px;
+}
+
+.page-subtitle{
+    font-size:11px;
+    opacity:0.45;
+    margin-bottom:40px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width:900px){
+    .hub{ padding:120px 24px 280px; }
+    .page-container{ padding:120px 24px 280px; max-width:100%; }
+    .sidebar{
+        right:auto; left:50%; top:auto; bottom:0;
+        transform:translateX(-50%);
+        flex-direction:row;
+        width:calc(100% - 40px);
+    }
+    .widget{ flex:1; padding:12px 14px; }
+    .header{ top:24px; left:20px; }
+}

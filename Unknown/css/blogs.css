@@ -1,0 +1,108 @@
+/* ============================================================
+   BLOGS — page-specific styles
+   Windows 8-style live tiles: large, square/portrait, bold.
+   Flip is slower and more deliberate than the home hub tiles.
+   ============================================================ */
+
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+    max-width:860px;
+}
+
+/* LIVE TILE */
+
+.blog-tile{
+    position:relative;
+    display:block;
+    height:200px;       /* was 130px — much taller, more W8 */
+    perspective:1400px;
+    text-decoration:none;
+    color:inherit;
+    border-radius:0;    /* W8 tiles have no border-radius */
+}
+
+.blog-tile-index{
+    position:absolute;
+    top:12px;
+    left:14px;
+    font-size:10px;
+    letter-spacing:2px;
+    opacity:0.3;
+    z-index:2;
+    pointer-events:none;
+}
+
+.blog-tile-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transform-style:preserve-3d;
+    /* slower flip — 1.8s feels deliberate, not snappy */
+    transition:transform 1.8s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;
+    border-radius:0;
+}
+
+.blog-tile:hover .blog-tile-inner{
+    box-shadow:0 12px 32px rgba(0,0,0,0.4);
+}
+
+.blog-tile.flipped .blog-tile-inner{
+    transform:rotateY(180deg);
+}
+
+.blog-tile-face{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.09);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:18px;
+    transition:border-color 0.2s ease, background 0.2s ease;
+}
+
+.blog-tile:hover .blog-tile-face{
+    border-color:rgba(120,150,255,0.4);
+    background:rgba(120,150,255,0.06);
+}
+
+.blog-tile-face--back{
+    transform:rotateY(180deg);
+    justify-content:center;
+    align-items:flex-start;
+    background:rgba(120,150,255,0.08);
+    border-color:rgba(120,150,255,0.2);
+}
+
+.blog-tile-title{
+    font-size:15px;
+    line-height:1.3;
+    opacity:0.9;
+    font-family:"BiondiSans", 'Space Mono', monospace;
+    letter-spacing:1px;
+}
+
+.blog-tile-desc{
+    font-size:11px;
+    line-height:1.6;
+    opacity:0.6;
+    font-style:italic;
+}
+
+/* wide tile variant for even-numbered entries (more W8 variety) */
+.blog-tile:nth-child(4),
+.blog-tile:nth-child(6){
+    height:240px;
+}
+
+@media (max-width:860px){
+    .blog-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+@media (max-width:560px){
+    .blog-grid{ grid-template-columns:1fr; }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aoiseikou // Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/home.css">
+
+</head>
+
+<body>
+
+<!-- LIGHT RAYS -->
+<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" class="bg">
+    <polygon points="-200,-200 600,0 1200,900 300,900" class="ray r1"/>
+    <polygon points="-200,-200 800,0 1400,900 700,900" class="ray r2"/>
+    <polygon points="-200,-200 900,0 1440,900 1100,900" class="ray r3"/>
+    <polygon points="-200,-200 1050,0 1440,700 1300,900" class="ray r4"/>
+</svg>
+
+<!-- HEADER (shell — persists across navigation) -->
+<div class="header">
+    <a class="logo" data-link="home.html">AOISEIKOU</a>
+    <div class="tagline">#DocumentingCulture<span class="caret">_</span></div>
+</div>
+
+<!-- CONTENT (swapped by router.js on navigation) -->
+<div class="hub" id="content">
+
+    <div class="container">
+
+        <!-- CULTURE -->
+        <div class="category active">
+            <div class="cat-title">Culture Core</div>
+
+            <div class="tiles">
+                <div class="tile focused" data-link="blogs.html">Blogs</div>
+                <div class="tile" data-link="media.html">Media</div>
+                <div class="tile" data-link="radio.html">Radio</div>
+            </div>
+        </div>
+
+        <!-- SYSTEM -->
+        <div class="category">
+            <div class="cat-title">System Layer</div>
+
+            <div class="tiles">
+                <div class="tile" data-link="community.html">Community</div>
+                <div class="tile" data-link="nex.html">Nex</div>
+                <div class="tile" data-link="aoi-dvd.html">AOI DVD</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SIDEBAR (shell — persists across navigation, holds the player so audio never stops) -->
+<aside class="sidebar">
+
+    <!-- WIDGET: PREVIEW -->
+    <div class="widget widget--preview">
+        <div class="widget-head">
+            <span class="widget-label">PREVIEW</span>
+            <span class="widget-dot"></span>
+        </div>
+        <div class="preview">
+            <div id="p-title">Blogs</div>
+            <div id="p-desc">Documentation logs</div>
+            <div id="p-cat">Culture Core</div>
+        </div>
+    </div>
+
+    <!-- WIDGET: MUSIC -->
+    <div class="widget widget--player" id="player">
+        <div class="widget-head">
+            <span class="widget-label">NOW PLAYING</span>
+            <span class="widget-dot widget-dot--live"></span>
+        </div>
+
+        <canvas id="visualizer" class="visualizer"></canvas>
+
+        <div class="player-meta">
+            <span id="trackTitle">ambient_loop</span>
+            <span id="trackSub">placeholder · press space to play</span>
+        </div>
+
+        <div class="player-row player-controls">
+            <button id="playBtn" class="player-btn player-btn--play">▶</button>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="55">
+            <button id="loadTrackBtn" class="player-btn player-btn--text">+ load</button>
+        </div>
+        <input type="file" id="fileInput" accept="audio/*" hidden>
+    </div>
+
+</aside>
+
+<script src="js/router.js"></script>
+<script src="js/home.js"></script>
+<script src="js/player.js"></script>
+
+</body>
+</html>
